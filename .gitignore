@@ -1,0 +1,14 @@
+logs
+*.log
+npm-debug.log*
+node_modules/
+typings/
+.env
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+.history
+Thumbs.db
+Desktop.ini

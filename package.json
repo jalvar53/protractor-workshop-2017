@@ -22,7 +22,7 @@
     "url": "https://github.com/jalvar53/protractor-workshop-2017/issues"
   },
   "homepage": "https://github.com/jalvar53/protractor-workshop-2017#readme",
-  "dependencies": {
+  "devDependencies": {
     "protractor": "^5.2.0"
   }
 }

@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "clean": "rm -rf dist",
-    "lint": "tslint --type-check --project tsconfig.json protractor/**/*.ts src/**/*.ts",
+    "lint": "tslint --project tsconfig.json protractor/**/*.ts src/**/*.ts",
     "prebuild": "npm run clean",
     "build": "tsc",
     "postinstall": "webdriver-manager update --gecko false",

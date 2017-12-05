@@ -5,11 +5,15 @@ export class ShippingStepPage {
     return $('#form > p > button > span');
   }
 
+  private get termsOfService(): ElementFinder {
+    return $('#cgv');
+  }
+
   public goToPaymentMenu(): promise.Promise<void> {
     return this.paymentMenu.click();
   }
 
   public agreeTermsOfService(): promise.Promise<void> {
-    return $('#cgv').click();
+    return this.termsOfService.click();
   }
 }

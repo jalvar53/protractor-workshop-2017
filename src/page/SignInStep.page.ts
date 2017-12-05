@@ -6,12 +6,9 @@ export class SignInStepPage {
   }
 
   public goToAddressesMenu(): promise.Promise<void> {
-    this.fillSignInForm();
+    $('#email').sendKeys('aperdomobo@gmail.com');
+    $('#passwd').sendKeys('WorkshopProtractor');
     return this.addressesMenu.click();
   }
 
-  private fillSignInForm(): void {
-    $('#email').sendKeys('aperdomobo@gmail.com');
-    $('#passwd').sendKeys('WorkshopProtractor');
-  }
 }

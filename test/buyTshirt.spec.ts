@@ -31,7 +31,7 @@ describe('Buy a t-shirt', () => {
 
  it('then should be bought a t-shirt', async () => {
     await browser.get('http://automationpractice.com/');
-    await(browser.sleep(10000));
+    //await(browser.sleep(10000));
     await menuContentPage.goToShirtMenu();
     await(browser.sleep(3000));
     await productListPage.goToShirtDetailsMenu();

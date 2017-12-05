@@ -2,7 +2,7 @@ import { $, ElementFinder, promise, browser, ExpectedConditions } from 'protract
 
 export class ProductAddedModalPage {
   private get productAddedModal(): ElementFinder {
-    return $('[style*="display: block;"] .button-container > a');
+    return $('.exclusive-medium + a');
   }
 
   public async goToSummary(): Promise<void> {

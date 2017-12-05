@@ -2,7 +2,7 @@ import { $, ElementFinder, promise } from 'protractor';
 
 export class MenuContentPage {
   private get tShirtMenu(): ElementFinder {
-    return $('#block_top_menu > ul > li:nth-child(3) > a');
+    return $('.sf-menu > li:nth-child(3) > a');
   }
 
   public goToShirtMenu(): promise.Promise<void> {

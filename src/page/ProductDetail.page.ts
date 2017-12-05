@@ -2,7 +2,7 @@ import { $, ElementFinder, promise } from 'protractor';
 
 export class ProductDetailPage {
   private get cartMenu(): ElementFinder {
-    return $('#add_to_cart > button > span');
+    return $('[name="Submit"] > span');
   }
 
   public goToCartMenu(): promise.Promise<void> {

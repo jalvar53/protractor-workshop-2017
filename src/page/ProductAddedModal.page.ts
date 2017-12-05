@@ -1,4 +1,4 @@
-import { $, ElementFinder, promise } from 'protractor';
+import { $, ElementFinder, promise, browser, ExpectedConditions } from 'protractor';
 
 export class ProductAddedModalPage {
   private get productAddedModal(): ElementFinder {
@@ -6,6 +6,7 @@ export class ProductAddedModalPage {
   }
 
   public goToSummary(): promise.Promise<void> {
+    browser.wait(ExpectedConditions.elementToBeClickable(this.productAddedModal));
     return this.productAddedModal.click();
   }
 }

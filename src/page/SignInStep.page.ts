@@ -9,9 +9,9 @@ export class SignInStepPage {
     return this.addressesMenu.click();
   }
 
-  public async fillSignInForm(): Promise<void> {
-    await $('#email').sendKeys('aperdomobo@gmail.com');
-    await $('#passwd').sendKeys('WorkshopProtractor');
+  public async fillSignInForm(email: string, password: string): Promise<any> {
+    await $('#email').sendKeys(email);
+    return $('#passwd').sendKeys(password);
   }
 
 }

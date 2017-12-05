@@ -5,7 +5,7 @@ export class AddressStepPage {
     return $('#center_column > form > p > button > span');
   }
 
-  public goToShippingMenu() {
-    this.shippingMenu.click();
+  public goToShippingMenu(): promise.Promise<void> {
+    return this.shippingMenu.click();
   }
 }

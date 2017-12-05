@@ -1,4 +1,4 @@
-import { $, ElementFinder, promise } from 'protractor';
+import { $, ElementFinder } from 'protractor';
 
 export class OrderResumePage {
   public get getOrderStatus(): ElementFinder {

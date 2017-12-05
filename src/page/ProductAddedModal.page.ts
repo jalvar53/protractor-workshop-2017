@@ -5,8 +5,8 @@ export class ProductAddedModalPage {
     return $('[style*="display: block;"] .button-container > a');
   }
 
-  public goToSummary(): promise.Promise<void> {
-    browser.wait(ExpectedConditions.elementToBeClickable(this.productAddedModal));
+  public async goToSummary(): Promise<void> {
+    await browser.wait(ExpectedConditions.elementToBeClickable(this.productAddedModal));
     return this.productAddedModal.click();
   }
 }

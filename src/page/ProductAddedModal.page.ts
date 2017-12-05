@@ -6,7 +6,7 @@ export class ProductAddedModalPage {
   }
 
   public async goToSummary(): Promise<void> {
-    await browser.wait(ExpectedConditions.elementToBeClickable(this.productAddedModal));
+    await browser.wait(ExpectedConditions.elementToBeClickable(this.productAddedModal), 4000);
     return this.productAddedModal.click();
   }
 }

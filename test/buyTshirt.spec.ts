@@ -42,8 +42,8 @@ describe('Buy a t-shirt', () => {
     await(browser.sleep(3000));
     await summaryStepPage.goToSiginMenu();
     await(browser.sleep(3000));
-    await $('#email').sendKeys('aperdomobo@gmail.com');
-    await $('#passwd').sendKeys('WorkshopProtractor');
+    await signInStepPage.fillSignInForm();
+    await(browser.sleep(3000));
     await signInStepPage.goToAddressesMenu();
     await(browser.sleep(3000));
     await addressStepPage.goToShippingMenu();

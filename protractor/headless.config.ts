@@ -3,7 +3,10 @@ import { reporter } from './helpers/reporter';
 
 export const config: Config = {
   framework: 'jasmine',
-  getPageTimeout: 1000,
+  jasmineNodeOpts: {
+    defaultTimeoutInterval: 120000
+  },
+  getPageTimeout: 30000,
   SELENIUM_PROMISE_MANAGER: false,
   specs: ['../test/*.spec.js'],
   noGlobals: true,

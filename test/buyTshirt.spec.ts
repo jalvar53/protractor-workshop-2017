@@ -1,44 +1,62 @@
 import { $, browser } from 'protractor';
+import { MenuContentPage,
+  ProductListPage,
+  ProductDetailPage,
+  ProductAddedModalPage,
+  SummaryStepPage,
+  SignInStepPage,
+  AddressStepPage,
+  ShippingStepPage,
+  PaymentStepPage,
+  BankPaymentStepPage,
+  OrderResumePage
+ } from '../src/page';
 
 describe('Buy a t-shirt', () => {
+ const menuContentPage: MenuContentPage = new MenuContentPage();
+ const productListPage: ProductListPage = new ProductListPage();
+ const productDetailPage: ProductDetailPage = new ProductDetailPage();
+ const productAddedModalPage: ProductAddedModalPage = new ProductAddedModalPage();
+ const summaryStepPage: SummaryStepPage = new SummaryStepPage();
+ const signInStepPage: SignInStepPage = new SignInStepPage();
+ const addressStepPage: AddressStepPage = new AddressStepPage();
+ const shippingStepPage: ShippingStepPage = new ShippingStepPage();
+ const paymentStepPage: PaymentStepPage = new PaymentStepPage();
+ const bankPaymentStepPage: BankPaymentStepPage = new BankPaymentStepPage();
+ const orderResumePage: OrderResumePage = new OrderResumePage();
+
  beforeEach(() => {
    jasmine.DEFAULT_TIMEOUT_INTERVAL = 120000;
  });
 
  it('then should be bought a t-shirt', async () => {
     await browser.get('http://automationpractice.com/');
-    await(browser.sleep(10000));
-    await $('#block_top_menu > ul > li:nth-child(3) > a').click();
+    await menuContentPage.goToShirtMenu();
     await(browser.sleep(3000));
-    await
-    $('#center_column > ul > li > div > div.left-block > div > a.product_img_link > img').click();
+    await productListPage.goToShirtDetailsMenu();
     await(browser.sleep(3000));
-    await $('#add_to_cart > button > span').click();
+    await productDetailPage.goToCartMenu();
     await(browser.sleep(3000));
-    await $('[style*="display: block;"] .button-container > a').click();
+    await productAddedModalPage.goToSummary();
     await(browser.sleep(3000));
-    await $('.cart_navigation span').click();
+    await summaryStepPage.goToSiginMenu();
     await(browser.sleep(3000));
-   
-    await $('#email').sendKeys('aperdomobo@gmail.com');
-    await $('#passwd').sendKeys('WorkshopProtractor');
-    await $('#SubmitLogin > span').click();
+    await signInStepPage.fillSignInForm('aperdomobo@gmail.com', 'WorkshopProtractor');
     await(browser.sleep(3000));
-   
-    await $('#center_column > form > p > button > span').click();
+    await signInStepPage.goToAddressesMenu();
     await(browser.sleep(3000));
- 
-    await $('#cgv').click();
+    await addressStepPage.goToShippingMenu();
     await(browser.sleep(3000));
- 
-    await $('#form > p > button > span').click();
+    await shippingStepPage.agreeTermsOfService();
     await(browser.sleep(3000));
-    await $('#HOOK_PAYMENT > div:nth-child(1) > div > p > a').click();
+    await shippingStepPage.goToPaymentMenu();
     await(browser.sleep(3000));
-    await $('#cart_navigation > button > span').click();
+    await paymentStepPage.goToBankPaymentMenu();
+    await(browser.sleep(3000));
+    await bankPaymentStepPage.goToOrderMenu();
     await(browser.sleep(3000));
  
-    await expect($('#center_column > div > p > strong').getText())
+    await expect(orderResumePage.getOrderStatus.getText())
       .toBe('Your order on My Store is complete.');
   });
  });

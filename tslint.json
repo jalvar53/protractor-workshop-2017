@@ -4,6 +4,7 @@
         "tslint-config-airbnb"
     ],
     "rules": {
+        "semicolon": [true, "always"],
         "trailing-comma": [true]
     }
 }

@@ -5,7 +5,7 @@ import { awesomeReporter } from './helpers/awesome-report';
 export const config: Config = {
   framework: 'jasmine',
   jasmineNodeOpts: {
-    defaultTimeoutInterval: 120000,
+    defaultTimeoutInterval: 120000
   },
   getPageTimeout: 30000,
   SELENIUM_PROMISE_MANAGER: false,

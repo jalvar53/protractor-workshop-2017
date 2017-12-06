@@ -8,5 +8,3 @@ export let awesomeReporter = () => {
   };
   jasmine.getEnv().addReporter(AwesomeReport.getReport(config));
 };
-
-

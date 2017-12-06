@@ -29,6 +29,7 @@ describe('Buy a t-shirt', () => {
     beforeAll(async () => {
       await browser.get('http://automationpractice.com/');
     });
+
     describe('When the user chooses a T-shirt from the catalog', () => {
       beforeAll(async () => {
         await menuContentPage.goToShirtMenu();
@@ -37,22 +38,26 @@ describe('Buy a t-shirt', () => {
         await productAddedModalPage.goToSummary();
         await summaryStepPage.goToSiginMenu();
       });
+
       describe('And logs in with his account', () => {
         beforeAll(async () => {
           await signInStepPage.fillSignInForm('aperdomobo@gmail.com', 'WorkshopProtractor');
           await signInStepPage.goToAddressesMenu();
           await addressStepPage.goToShippingMenu();
         });
+
         describe('And chooses his default address', () => {
           beforeAll(async () => {
             await shippingStepPage.agreeTermsOfService();
             await shippingStepPage.goToPaymentMenu();
           });
+
           describe('And pays for his order', () => {
             beforeAll(async () => {
               await paymentStepPage.goToBankPaymentMenu();
               await bankPaymentStepPage.goToOrderMenu();  
             });
+            
             it('Then, the order should be correct and completed', async () => {
               await expect(orderResumePage.getOrderStatus.getText())
               .toBe('Your order on My Store is complete.');

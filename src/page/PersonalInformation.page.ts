@@ -57,6 +57,7 @@ export class PersonalInformationPage {
     await personalInformation.commands.forEach(async (command: string) => {
       await this.fillCommandsInput(command);
     });
-    return await this.finalButton.click();
+
+    return this.finalButton.click();
   }
 }

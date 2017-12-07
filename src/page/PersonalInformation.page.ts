@@ -42,21 +42,21 @@ export class PersonalInformationPage {
     return $('#selenium_commands').element(by.cssContainingText('option', command)).click();
   }
 
-  public async fillForm(personalInfo: any): Promise<void> {
-    await this.fillFirstNameInput(personalInfo.firstName);
-    await this.fillLastNameInput(personalInfo.lastName);
-    await this.fillSexInput(personalInfo.sex);
-    await this.fillExperienceInput(personalInfo.experience);
-    await personalInfo.profession.forEach(async (profession) => {
+  public async fillForm(personalInformation: {[prop: string]: any}): Promise<void> {
+    await this.fillFirstNameInput(personalInformation.firstName);
+    await this.fillLastNameInput(personalInformation.lastName);
+    await this.fillSexInput(personalInformation.sex);
+    await this.fillExperienceInput(personalInformation.experience);
+    await personalInformation.profession.forEach(async (profession:string) => {
       await this.fillProfessionInput(profession);
     });
-    await personalInfo.tools.forEach(async (tool) => {
+    await personalInformation.tools.forEach(async (tool: string) => {
       await this.fillToolsInput(tool);
     });
-    await this.fillContinentInput(personalInfo.continent);
-    await personalInfo.commands.forEach(async (command) => {
+    await this.fillContinentInput(personalInformation.continent);
+    await personalInformation.commands.forEach(async (command: string) => {
       await this.fillCommandsInput(command);
     });
-    await this.finalButton.click();
+    return await this.finalButton.click();
   }
 }

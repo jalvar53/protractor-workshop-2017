@@ -15,8 +15,12 @@ export class ProductListPage {
 
   private selectProduct(productName: string): ElementFinder {
     return this.productContainerList
-    .filter(elem => elem.$('.product-name').getText()
-    .then(text => text === productName)).first();
+    .filter(elem => 
+      elem
+        .$('.product-name')
+        .getText()
+        .then(text => text === productName))
+        .first();
   }
 
 }

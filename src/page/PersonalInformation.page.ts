@@ -10,6 +10,14 @@ export class PersonalInformationPage {
     return $('#submit');
   }
 
+  public get uploadImageInput(): ElementFinder {
+    return $('#photo');
+  }
+
+  private async uploadImage(path: string): Promise<void> {
+    return this.uploadImageInput.sendKeys(path);
+  }
+
   private async fillFirstNameInput(firstName: string): Promise<void> {
     return $('input[name="firstname"]').sendKeys(firstName);
   }
@@ -42,7 +50,12 @@ export class PersonalInformationPage {
     return $('#selenium_commands').element(by.cssContainingText('option', command)).click();
   }
 
-  public async fillForm(personalInformation: {[prop: string]: any}): Promise<void> {
+  public async submit(personalInformation: {[prop: string]: any}) {
+    this.fillForm(personalInformation);
+    this.finalButton.click();
+  }
+
+  private async fillForm(personalInformation: {[prop: string]: any}): Promise<void> {
     await this.fillFirstNameInput(personalInformation.firstName);
     await this.fillLastNameInput(personalInformation.lastName);
     await this.fillSexInput(personalInformation.sex);
@@ -50,6 +63,7 @@ export class PersonalInformationPage {
     await personalInformation.profession.forEach(async (profession:string) => {
       await this.fillProfessionInput(profession);
     });
+    await this.uploadImage(personalInformation.file);
     await personalInformation.tools.forEach(async (tool: string) => {
       await this.fillToolsInput(tool);
     });
@@ -57,7 +71,5 @@ export class PersonalInformationPage {
     await personalInformation.commands.forEach(async (command: string) => {
       await this.fillCommandsInput(command);
     });
-
-    return this.finalButton.click();
   }
 }

@@ -12,7 +12,7 @@ import { MenuContentPage,
   OrderResumePage
  } from '../src/page';
 
-describe('Buy a t-shirt', () => {
+xdescribe('Buy a t-shirt', () => {
   const menuContentPage: MenuContentPage = new MenuContentPage();
   const productListPage: ProductListPage = new ProductListPage();
   const productDetailPage: ProductDetailPage = new ProductDetailPage();

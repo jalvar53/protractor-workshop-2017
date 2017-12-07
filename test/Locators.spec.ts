@@ -32,5 +32,5 @@ describe('Fill form', () => {
                 await expect(personalInformationPage.title.getText()).toBe("Practice Automation Form");
             });
         });
-    })
+    });
 });

@@ -1,4 +1,4 @@
-import { $, ElementFinder, element, browser, by, promise } from "protractor";
+import { $, ElementFinder, element, by, promise } from "protractor";
 
 export class PersonalInformationPage {
 
@@ -42,7 +42,7 @@ export class PersonalInformationPage {
         return $('#selenium_commands').element(by.cssContainingText('option', command)).click();
     }
 
-    public async fillForm(personalInfo: any) {
+    public async fillForm(personalInfo: any): Promise<void> {
         await this.fillFirstNameInput(personalInfo.firstName);
         await this.fillLastNameInput(personalInfo.lastName);
         await this.fillSexInput(personalInfo.sex);

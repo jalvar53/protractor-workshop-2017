@@ -35,7 +35,6 @@ export class IFramePage {
   public async getIFrameHeight(): Promise<string> {
     await browser.wait(ExpectedConditions.presenceOf(this.frame1), 4000);
     return this.frame1.getAttribute('height');
-  }
 
   public async setIFrameHeight(newHeight: string): Promise<string> {
     return browser.executeScript(
@@ -44,5 +43,4 @@ export class IFramePage {
       return height;
     });
   }
-
 }

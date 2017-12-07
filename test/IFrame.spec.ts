@@ -9,6 +9,18 @@ describe('Test IFrames', () => {
             await browser.get('http://toolsqa.com/iframe-practice-page/');
         });
 
+        describe('When the user changes the IFrame height', () => {
+            beforeAll(async () => {
+                await iFramePage.setIFrameHeight('1000');
+            });
+
+            describe('Then, when fetching the IFrame height', () => {
+                it('Should be the same set before', async () => {
+                    await expect(iFramePage.getIFrameHeight()).toBe('1000');
+                });
+            });
+        });
+
         describe('When the user is at the main context', () => {
             it('Then, the title should be "Sample Iframe page"', async () => {
                 await expect(iFramePage.getMainPageTitle()).toBe('Sample Iframe page');
@@ -17,22 +29,23 @@ describe('Test IFrames', () => {
 
         describe('When the user switches to the IFrame 1 context', () => {
             beforeAll(async () => {
-                await iFramePage.iFrame1Context;                
+                await iFramePage.formIFrameContext();
             });
 
             it('Then, the title should be "Practice Automation Form"', async () => {
-                await expect(iFramePage.getIFrame1PageTitle()).toBe('Practice Automation Form');
+                await expect(iFramePage.getFormIFramePageTitle()).toBe('Practice Automation Form');
             });
         });
 
         describe('When the user switches to the main context', () => {
             beforeAll(async () => {
-                await iFramePage.mainContext;                
+                await iFramePage.mainContext;
             });
 
             it('Then, the title should be "Sample Iframe page" again"', async () => {
                 await expect(iFramePage.getMainPageTitle()).toBe('Sample Iframe page');
             });
         });
+
     });
 });

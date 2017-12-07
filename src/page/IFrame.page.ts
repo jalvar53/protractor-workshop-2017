@@ -2,11 +2,11 @@ import { $, browser, promise, ElementFinder, ExpectedConditions } from 'protract
 
 export class IFramePage {
 
-  private get frame1(): ElementFinder {
+  private get formIframe(): ElementFinder {
     return $('#IF1');
   }
 
-  private get frame1Title(): ElementFinder {
+  private get formIframeTitle(): ElementFinder {
     return $('.wpb_wrapper > h1');
   }
 
@@ -14,17 +14,17 @@ export class IFramePage {
     return $('#content > h1');
   }
 
-  public get iFrame1Context(): promise.Promise<void> {
-    return browser.switchTo().frame(this.frame1.getWebElement());
+  public async formIFrameContext(): Promise<void> {
+    return browser.switchTo().frame(this.formIframe.getWebElement());
   }
 
   public get mainContext(): promise.Promise<void> {
     return browser.switchTo().defaultContent();
   }
 
-  public async getIFrame1PageTitle(): Promise<string> {
-    await browser.wait(ExpectedConditions.presenceOf(this.frame1Title), 4000);
-    return this.frame1Title.getAttribute('innerHTML');
+  public async getFormIFramePageTitle(): Promise<string> {
+    await browser.wait(ExpectedConditions.presenceOf(this.formIframeTitle), 4000);
+    return this.formIframeTitle.getAttribute('innerHTML');
   }
 
   public async getMainPageTitle(): Promise<string> {
@@ -33,8 +33,9 @@ export class IFramePage {
   }
 
   public async getIFrameHeight(): Promise<string> {
-    await browser.wait(ExpectedConditions.presenceOf(this.frame1), 4000);
-    return this.frame1.getAttribute('height');
+    await browser.wait(ExpectedConditions.presenceOf(this.formIframe), 4000);
+    return this.formIframe.getAttribute('height');
+  }
 
   public async setIFrameHeight(newHeight: string): Promise<string> {
     return browser.executeScript(
@@ -43,4 +44,5 @@ export class IFramePage {
       return height;
     });
   }
+
 }

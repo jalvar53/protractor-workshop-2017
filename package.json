@@ -33,7 +33,7 @@
   "devDependencies": {
     "@types/hasha": "^3.0.0",
     "@types/jasminewd2": "^2.0.3",
-    "hasha": "^3.0.0",
+    "crypto": "^1.0.1",
     "jasmine-awesome-report": "0.0.3",
     "jasmine-spec-reporter": "^4.2.1",
     "protractor": "^5.2.0",

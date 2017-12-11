@@ -1,7 +1,7 @@
 import { $, browser } from 'protractor';
 import { PersonalInformationPage } from '../src/page';
 import { DownloadService } from '../src/service/Download.service';
-import * as hasha from 'hasha';
+import { createHash } from 'crypto';
 
 describe('Fill form', () => {
     const personalInformationPage: PersonalInformationPage = new PersonalInformationPage();
@@ -51,8 +51,10 @@ describe('Fill form', () => {
                 });
 
                 it('The file should be downloaded correctly', async () => {
+                    const hash = createHash('sha256');
                     const shasum: string = 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855';
-                    expect(hasha(downloadService.readFileFromTemp('test-file.xlsx'), { algorithm: 'sha256' })).toMatch(shasum);
+                    const downloadedFile = downloadService.readFileFromTemp('test-file.xlsx');
+                    expect(hash.update(downloadedFile).digest('hex')).toMatch(shasum);
                 });
             });
         });

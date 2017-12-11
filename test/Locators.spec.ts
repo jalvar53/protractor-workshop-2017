@@ -9,7 +9,7 @@ describe('Fill form', () => {
         sex: 'Male',
         experience: 7,
         file: 'resources\\wow.jpg',
-        profession: ['Automation Tester'],
+        professions: ['Automation Tester'],
         tools: ['Selenium Webdriver'],
         continent: 'South America',
         commands: [
@@ -27,7 +27,7 @@ describe('Fill form', () => {
 
         describe('When the user fills every input', () => {
             beforeAll(async () => {
-                personalInformationPage.fillForm(formInformation);
+                await personalInformationPage.fillForm(formInformation);
             });
 
             it('The title should be "Practice Automation Form"', async () => {
@@ -35,7 +35,7 @@ describe('Fill form', () => {
             });
 
             it('The image should be loaded', async () => {
-                const pathIndex = formInformation.file.lastIndexOf('\\');
+                const pathIndex = formInformation.file.lastIndexOf('\\') + 1;
                 const filename = formInformation.file.substring(pathIndex);
                 expect(await personalInformationPage.getImageName()).toMatch(filename);
             });

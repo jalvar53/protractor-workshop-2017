@@ -1,17 +1,20 @@
 language: node_js
 cache:
   directories:
-    - node_modules
+  - node_modules
 notifications:
   email: false
 node_js:
-  - '7'
+- '7'
 before_install:
-  - wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
-  - sudo sh -c 'echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list'
-  - sudo apt-get update
-  - sudo apt-get install google-chrome-stable
-  - export CHROME_BIN=chromium-browser
+- wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key
+- sudo sh -c 'echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list'
+- sudo apt-get update
+- sudo apt-get install google-chrome-stable
+- export CHROME_BIN=chromium-browser
 branches:
   except:
-    - /^v\d+\.\d+\.\d+$/
+  - "/^v\\d+\\.\\d+\\.\\d+$/"
+env:
+  global:
+    secure: bY0BnMcUS2IeYLdyJW5zSRKrlfbji16Yk+DCcw7sywEfNg7KUgrvLQHvTxgegf/cksaAAPfefcR2gpd3Ydzp3tPFr4OgvLfPQAEersWqWItJe6JmWqOVzc4ouDLVv9qZdjoMTR9JDSRS0M2o5AaK93zBl+STpsKiz6SBn4KSLNZXrF8B50+SX+iC2R2IwDIOpCwUEEKoA9xrsvXzojlajC4MNEc4UZaYa9jDYnMcBCK/M3ddn5v5ivfZqYKR3IS3o5LEXhsEDX7WgU2G/rdjDJ2AtS85kI9W0ZHqn19HHGJC7TfjaHRD7XZGRjIHXfcnAQLjrmbFQR8WWhmhjFSXdbM0nPlv/c3fBKK7afzb5u2v9GYuLaRMJgAKMbqQueKmgd4Ig/8GJ5bRKtW2usvXuaP0ziIXYZnaZvKCpNJqshbSypO8uIy1Cru6pH6gctJKSZiFQPSUwSmdDQBbQYH4buRMEBA+6U0R30QG65xHuOBicBTAzm0x5m5djorFNYGNEJNd9wc8bBD/B8sIfioLkVG+Ka6DTyZEWm0CswpmU/Rhj64lBqakkpcxwemdFdyafe4bsGY0/mbH+mcKIfW4RnU82Tw03nrYtIrjfsrP49I3U+FI51Vko6ZA9Os02U/YqbdYXuscBIVacQgU2jUxe4lff2vRQbv3upCgbSk2iws=

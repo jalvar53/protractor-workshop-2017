@@ -10,9 +10,10 @@
     "build": "tsc",
     "postinstall": "webdriver-manager update --gecko false",
     "pretest": "npm run lint && npm run build",
-    "test": "npm run test:headless",
+    "test": "npm run test:saucelabs",
     "test:local": "protractor dist/protractor/config.js",
-    "test:headless": "protractor dist/protractor/headless.config.js"
+    "test:headless": "protractor dist/protractor/headless.config.js",
+    "test:saucelabs": "protractor dist/protractor/saucelabs.config.js"
   },
   "repository": {
     "type": "git",
@@ -32,6 +33,7 @@
   "homepage": "https://github.com/jalvar53/protractor-workshop-2017#readme",
   "devDependencies": {
     "@types/jasminewd2": "^2.0.3",
+    "cross-env": "^5.1.1",
     "jasmine-awesome-report": "0.0.3",
     "jasmine-spec-reporter": "^4.2.1",
     "protractor": "^5.2.0",

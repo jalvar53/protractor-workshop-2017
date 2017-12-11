@@ -5,16 +5,18 @@ cache:
 notifications:
   email: false
 node_js:
-  - '7'
+- '7'
 before_install:
-  - wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
-  - sudo sh -c 'echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list'
-  - sudo apt-get update
-  - sudo apt-get install google-chrome-stable
-  - export CHROME_BIN=chromium-browser
+- wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key
+  add -
+- sudo sh -c 'echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list'
+- sudo apt-get update
+- sudo apt-get install google-chrome-stable
+- export CHROME_BIN=chromium-browser
 branches:
   except:
   - "/^v\\d+\\.\\d+\\.\\d+$/"
 env:
   global:
-    secure: bY0BnMcUS2IeYLdyJW5zSRKrlfbji16Yk+DCcw7sywEfNg7KUgrvLQHvTxgegf/cksaAAPfefcR2gpd3Ydzp3tPFr4OgvLfPQAEersWqWItJe6JmWqOVzc4ouDLVv9qZdjoMTR9JDSRS0M2o5AaK93zBl+STpsKiz6SBn4KSLNZXrF8B50+SX+iC2R2IwDIOpCwUEEKoA9xrsvXzojlajC4MNEc4UZaYa9jDYnMcBCK/M3ddn5v5ivfZqYKR3IS3o5LEXhsEDX7WgU2G/rdjDJ2AtS85kI9W0ZHqn19HHGJC7TfjaHRD7XZGRjIHXfcnAQLjrmbFQR8WWhmhjFSXdbM0nPlv/c3fBKK7afzb5u2v9GYuLaRMJgAKMbqQueKmgd4Ig/8GJ5bRKtW2usvXuaP0ziIXYZnaZvKCpNJqshbSypO8uIy1Cru6pH6gctJKSZiFQPSUwSmdDQBbQYH4buRMEBA+6U0R30QG65xHuOBicBTAzm0x5m5djorFNYGNEJNd9wc8bBD/B8sIfioLkVG+Ka6DTyZEWm0CswpmU/Rhj64lBqakkpcxwemdFdyafe4bsGY0/mbH+mcKIfW4RnU82Tw03nrYtIrjfsrP49I3U+FI51Vko6ZA9Os02U/YqbdYXuscBIVacQgU2jUxe4lff2vRQbv3upCgbSk2iws=
+  - secure: QPfB4lRh0ObPSAuNKtSpfdt0kB6xM7w932/b0FS5xQXcwtF2a1KhIoV75MHQEYw9d7U++e7QwmcCKoBsvXB5qQQxHorkFYrlsvrTkEQZippJrIhjnT6otCr+fYXYB+hwfPD5LTXQlqgOhT4XXhJzwwk+abHyknGzQw1WjSsa4u1BPrCcwpCbYItmK1ouZ66bcMgiHEIaH/wtC6ELMrNz4WfMHKPy/LSSw3Eoe5A3ummc/G1xXkc8zbpmpYA6wvXyURQt0eZxJQm1UT2LVWlQotNieNEX0W720jCgf6IGmobXlumU2guJFOzG/vZyxr5atVsLnPrsLLR7MNYnHB1X2ND9wiH6X8Z9jmZ5/IXGn0WRKtcY4I5FWjg8ktE3fTKDUSDk7RYz2UXoZqbZSh3cdNISXLPwmfWD1kLIcP7Tb4QBF9jCVYmzDbwSXeZ6nBzFgg5q6CDwRqXENDlVyn7E4aiGcsoikmmAniyFNjGEu6/B7na+pBLGAHNqlO5BYPnUsjLsx13JxwRteYSM9IFdCb3OhtCBT5F6SnSSEmADCq21bXEid8EiXSEZkdpjhQGLKtPzXQw3ZUNlJgtKdQ/JZW08zOweJPXJTaaiPrbf/8/ODV7LvGIJOQ4TVSGBUEVQpUTH/ST3Oc50pYXFL0RZuK2K0RqGCKu5insV6DGcj/M=
+  - secure: NZbNkL2uccTBP1bDJud5jTtFYRsjkodqjJyktaMOtKKjMhOAAh0T4gdrP+9ec16ToeL3Y33hEfDVa+/WKAz9BtEEKSMDSM/mpM10cLMdxDflaqrhUAbsCK9CDI3PQ8WQwA3hB/1gF3x8fTkihfO0ROlMeznRRbZjl9GpTkXdpSt0ihhHM5wejY1u3ZzTQskVnERz9oYYiZjDvW7QWFO80BOFrgpSowfG5/OHA+lxfLTFPjgZKEFaEt8fWxDZsvpvDC5wTZEySibjGWFo+BKOBG16uAI/WqOdxjhEgbDKBlpnD04qVunj8ZPZHqICOJ+A9MJuV4gewVG++rWW+YTr+OP0bBDv1mSnuxuTiqF7f5ISfUzXOVEEAWxwOPAXOGx4k4l7Jr6aEkTawNvH/AY3JFm4KTKSglU/y2cp4DQ76IvpGnu6nSPZnhLjR96yc5lJSwuxMworuTnAbSP/MGTpSGtvmGZW0ambnHivjDkwm8LjRDfrAyAEmM1/nYD1Gw4X1RVBQgerrUfPkeY8Y49LSGXES+EX9bqLxx1wIIwLHjoyekOSwio0spGU0KAZgr7B8FFN+nhBM+/i5vhZqn8U3P5S9dsDbIcEyXseMys6vOVF1rX0ZO5dFMNClixDf90qrnRClR42t/qgpe5vWpClEbXcZOir/cxsip5IsKr5xZc=

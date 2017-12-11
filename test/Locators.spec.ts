@@ -52,7 +52,7 @@ describe('Fill form', () => {
 
                 it('The file should be downloaded correctly', async () => {
                     const hash = createHash('sha256');
-                    const shasum: string = 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855';
+                    const shasum: string = 'f0a891cc6c7c0b1ff30527867830de2eb925697f9b8366e248f7fbb2bbd85c2b';
                     const downloadedFile = downloadService.readFileFromTemp('test-file.xlsx');
                     expect(hash.update(downloadedFile).digest('hex')).toBe(shasum);
                 });

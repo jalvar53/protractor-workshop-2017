@@ -10,7 +10,7 @@
     "build": "tsc",
     "postinstall": "webdriver-manager update --gecko false",
     "pretest": "npm run lint && npm run build",
-    "test": "npm run test:local",
+    "test": "npm run test:headless",
     "test:local": "protractor dist/protractor/config.js",
     "test:headless": "protractor dist/protractor/headless.config.js"
   },

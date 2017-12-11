@@ -1,4 +1,4 @@
-import { $, ElementFinder, element, by, promise } from 'protractor';
+import { $, ElementFinder, element, by } from 'protractor';
 import { resolve } from 'path';
 
 export class PersonalInformationPage {

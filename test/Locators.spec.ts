@@ -1,4 +1,4 @@
-import { $, browser, promise } from 'protractor';
+import { $, browser } from 'protractor';
 import { PersonalInformationPage } from '../src/page';
 
 describe('Fill form', () => {

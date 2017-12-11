@@ -1,4 +1,5 @@
 import { $, ElementFinder, element, by, promise } from 'protractor';
+import { resolve } from 'path';
 
 export class PersonalInformationPage {
 
@@ -15,7 +16,8 @@ export class PersonalInformationPage {
   }
 
   private async uploadImage(path: string): Promise<void> {
-    return this.uploadImageInput.sendKeys(path);
+    const absoluteImagePath: string = resolve(path);
+    return this.uploadImageInput.sendKeys(absoluteImagePath);
   }
 
   private async fillFirstNameInput(firstName: string): Promise<void> {
@@ -50,12 +52,16 @@ export class PersonalInformationPage {
     return $('#selenium_commands').element(by.cssContainingText('option', command)).click();
   }
 
-  public async submit(personalInformation: {[prop: string]: any}) {
-    this.fillForm(personalInformation);
-    this.finalButton.click();
+  public async submit(personalInformation: {[prop: string]: any}): Promise<void> {
+    await this.fillForm(personalInformation);
+    return this.finalButton.click();
   }
 
-  private async fillForm(personalInformation: {[prop: string]: any}): Promise<void> {
+  public getImageName() {
+    return this.uploadImageInput.getAttribute('value');
+  }
+
+  public async fillForm(personalInformation: {[prop: string]: any}): Promise<void> {
     await this.fillFirstNameInput(personalInformation.firstName);
     await this.fillLastNameInput(personalInformation.lastName);
     await this.fillSexInput(personalInformation.sex);

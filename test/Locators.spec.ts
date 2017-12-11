@@ -1,9 +1,24 @@
-import { $, browser } from 'protractor';
+import { $, browser, promise } from 'protractor';
 import { PersonalInformationPage } from '../src/page';
-import { resolve } from 'path';
 
 describe('Fill form', () => {
     const personalInformationPage: PersonalInformationPage = new PersonalInformationPage();
+    const formInformation = {
+        firstName: 'Alejandro',
+        lastName: 'Perdomo',
+        sex: 'Male',
+        experience: 7,
+        file: 'resources\\wow.jpg',
+        profession: ['Automation Tester'],
+        tools: ['Selenium Webdriver'],
+        continent: 'South America',
+        commands: [
+          'Browser Commands',
+          'Navigation Commands',
+          'Switch Commands',
+          'Wait Commands',
+          'WebElement Commands']
+    };
 
     describe('Given another website', () => {
         beforeAll(async () => {
@@ -12,22 +27,7 @@ describe('Fill form', () => {
 
         describe('When the user fills every input', () => {
             beforeAll(async () => {
-                await personalInformationPage.submit({
-                    firstName: 'Alejandro',
-                    lastName: 'Perdomo',
-                    sex: 'Male',
-                    experience: 7,
-                    file: resolve('resources\\wow.jpg'),
-                    profession: ['Automation Tester'],
-                    tools: ['Selenium Webdriver'],
-                    continent: 'South America',
-                    commands: [
-                      'Browser Commands',
-                      'Navigation Commands',
-                      'Switch Commands',
-                      'Wait Commands',
-                      'WebElement Commands']
-                });
+                await personalInformationPage.fillForm(formInformation);
             });
 
             it('The title should be "Practice Automation Form"', async () => {
@@ -35,7 +35,9 @@ describe('Fill form', () => {
             });
 
             it('The image should be loaded', async () => {
-                await expect(personalInformationPage.uploadImageInput.getAttribute('value')).toBe('wow.jpg');
+                const pathIndex = formInformation.file.lastIndexOf('\\');
+                const filename = formInformation.file.substring(pathIndex);
+                await expect(personalInformationPage.getImageName()).toMatch(filename);
             });
         });
     });

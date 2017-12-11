@@ -1,7 +1,10 @@
 import { $, ElementFinder, element, by } from 'protractor';
 import { resolve } from 'path';
+import { DownloadService } from '../service/Download.service';
 
 export class PersonalInformationPage {
+
+  downloadService: DownloadService = new DownloadService();
 
   public get title(): ElementFinder {
     return $('.wpb_wrapper > h1');
@@ -9,6 +12,10 @@ export class PersonalInformationPage {
 
   private get finalButton(): ElementFinder {
     return $('#submit');
+  }
+
+  public get downloadButton(): ElementFinder {
+    return $('a[href$=".xlsx"]');
   }
 
   public get uploadImageInput(): ElementFinder {
@@ -58,6 +65,11 @@ export class PersonalInformationPage {
     });
   }
 
+  private async download(fileName: string): Promise<void> {
+    const link: string = await this.downloadButton.getAttribute('href');
+    return this.downloadService.downloadFile(link, fileName);
+  }
+
   public async submit(personalInformation: {[prop: string]: any}): Promise<void> {
     await this.fillForm(personalInformation);
     return this.finalButton.click();
@@ -74,6 +86,9 @@ export class PersonalInformationPage {
     await this.fillExperienceInput(personalInformation.experience);
     await this.fillProfessionInput(personalInformation.professions);
     await this.uploadImage(personalInformation.file);
+    if (personalInformation.hasOwnProperty('downloadFile')) {
+      await this.download(personalInformation.downloadFile);
+    }
     await this.fillToolsInput(personalInformation.tools);
     await this.fillContinentInput(personalInformation.continent);
     return this.fillCommandsInput(personalInformation.commands);

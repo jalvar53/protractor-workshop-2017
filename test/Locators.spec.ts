@@ -1,8 +1,12 @@
 import { $, browser } from 'protractor';
 import { PersonalInformationPage } from '../src/page';
+import { DownloadService } from '../src/service/Download.service';
+import * as hasha from 'hasha';
 
 describe('Fill form', () => {
     const personalInformationPage: PersonalInformationPage = new PersonalInformationPage();
+    const downloadService: DownloadService = new DownloadService();
+
     const formInformation = {
         firstName: 'Alejandro',
         lastName: 'Perdomo',
@@ -38,6 +42,18 @@ describe('Fill form', () => {
                 const pathIndex = formInformation.file.lastIndexOf('/') + 1;
                 const filename = formInformation.file.substring(pathIndex);
                 expect(await personalInformationPage.getImageName()).toMatch(filename);
+            });
+
+            describe('When the user downloads a file', () => {
+                beforeAll(async () => {
+                    formInformation['downloadFile'] = 'test-file.xlsx';
+                    await personalInformationPage.fillForm(formInformation);
+                });
+
+                it('The file should be downloaded correctly', async () => {
+                    const shasum: string = 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855';
+                    expect(hasha(downloadService.readFileFromTemp('test-file.xlsx'), { algorithm: 'sha256' })).toMatch(shasum);
+                });
             });
         });
     });

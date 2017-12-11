@@ -1,6 +1,7 @@
 import { browser, Config } from 'protractor';
 import { reporter } from './helpers/reporter';
 import { awesomeReporter } from './helpers/awesome-report';
+import { resolve } from 'path';
 
 export const config: Config = {
   framework: 'jasmine',
@@ -15,7 +16,13 @@ export const config: Config = {
     browserName: 'chrome',
     chromeOptions: {
       args: ['disable-infobars=true --windows-size=800,600'],
-      prefs: { credentials_enable_service: false }
+      prefs: {
+        credentials_enable_service: false,
+        download: {
+          prompt_for_download: false,
+          default_directory: resolve('temp')
+        }
+      }
     }
   },
   onPrepare: () => {

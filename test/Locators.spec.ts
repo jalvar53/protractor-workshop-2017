@@ -8,7 +8,7 @@ describe('Fill form', () => {
         lastName: 'Perdomo',
         sex: 'Male',
         experience: 7,
-        file: 'resources\\wow.jpg',
+        file: 'resources/wow.jpg',
         professions: ['Automation Tester'],
         tools: ['Selenium Webdriver'],
         continent: 'South America',
@@ -35,7 +35,7 @@ describe('Fill form', () => {
             });
 
             it('The image should be loaded', async () => {
-                const pathIndex = formInformation.file.lastIndexOf('\\') + 1;
+                const pathIndex = formInformation.file.lastIndexOf('/') + 1;
                 const filename = formInformation.file.substring(pathIndex);
                 expect(await personalInformationPage.getImageName()).toMatch(filename);
             });

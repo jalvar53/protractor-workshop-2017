@@ -18,7 +18,7 @@ export class IFramePage {
     return browser.switchTo().frame(this.formIframe.getWebElement());
   }
 
-  public get mainContext(): promise.Promise<void> {
+  public async mainContext(): Promise<void> {
     return browser.switchTo().defaultContent();
   }
 

@@ -39,7 +39,7 @@ describe('Test IFrames', () => {
 
         describe('When the user switches to the main context', () => {
             beforeAll(async () => {
-                await iFramePage.mainContext;
+                await iFramePage.mainContext();
             });
 
             it('Then, the title should be "Sample Iframe page" again"', async () => {

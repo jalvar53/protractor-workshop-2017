@@ -16,14 +16,14 @@ describe('Test IFrames', () => {
 
             describe('Then, when fetching the IFrame height', () => {
                 it('Should be the same set before', async () => {
-                    await expect(iFramePage.getIFrameHeight()).toBe('1000');
+                    expect(await iFramePage.getIFrameHeight()).toBe('1000');
                 });
             });
         });
 
         describe('When the user is at the main context', () => {
             it('Then, the title should be "Sample Iframe page"', async () => {
-                await expect(iFramePage.getMainPageTitle()).toBe('Sample Iframe page');
+                expect(await iFramePage.getMainPageTitle()).toBe('Sample Iframe page');
             });
         });
 
@@ -33,7 +33,7 @@ describe('Test IFrames', () => {
             });
 
             it('Then, the title should be "Practice Automation Form"', async () => {
-                await expect(iFramePage.getFormIFramePageTitle()).toBe('Practice Automation Form');
+                expect(await iFramePage.getFormIFramePageTitle()).toBe('Practice Automation Form');
             });
         });
 
@@ -43,7 +43,7 @@ describe('Test IFrames', () => {
             });
 
             it('Then, the title should be "Sample Iframe page" again"', async () => {
-                await expect(iFramePage.getMainPageTitle()).toBe('Sample Iframe page');
+                expect(await iFramePage.getMainPageTitle()).toBe('Sample Iframe page');
             });
         });
 

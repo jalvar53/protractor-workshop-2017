@@ -1,4 +1,5 @@
-import { $, ElementFinder, element, by, promise } from 'protractor';
+import { $, ElementFinder, element, by } from 'protractor';
+import { resolve } from 'path';
 
 export class PersonalInformationPage {
 
@@ -8,6 +9,15 @@ export class PersonalInformationPage {
 
   private get finalButton(): ElementFinder {
     return $('#submit');
+  }
+
+  public get uploadImageInput(): ElementFinder {
+    return $('#photo');
+  }
+
+  private async uploadImage(path: string): Promise<void> {
+    const absoluteImagePath: string = resolve(path);
+    return this.uploadImageInput.sendKeys(absoluteImagePath);
   }
 
   private async fillFirstNameInput(firstName: string): Promise<void> {
@@ -26,20 +36,35 @@ export class PersonalInformationPage {
     return $(`input[name="exp"][value="${years}"]`).click();
   }
 
-  private async fillProfessionInput(profession: string): Promise<void> {
-    return $(`input[name="profession"][value="${profession}"]`).click(); 
+  private async fillProfessionInput(professions: string[]): Promise<void> {
+    await professions.forEach(async (profession:string) => {
+      await $(`input[name="profession"][value="${profession}"]`).click(); 
+    });
   }
 
-  private async fillToolsInput(tool: string): Promise<void> {
-    return $(`input[name="tool"][value="${tool}"]`).click(); 
+  private async fillToolsInput(tools: string[]): Promise<void> {
+    await tools.forEach(async (tool: string) => {
+      await $(`input[name="tool"][value="${tool}"]`).click(); 
+    });
   }
 
   private async fillContinentInput(continent: string): Promise<void> {
     return $('#continents').element(by.cssContainingText('option', continent)).click();
   }
 
-  private async fillCommandsInput(command: string): Promise<void> {
-    return $('#selenium_commands').element(by.cssContainingText('option', command)).click();
+  private async fillCommandsInput(commands: string[]): Promise<void> {
+    await commands.forEach(async (command: string) => {
+      await $('#selenium_commands').element(by.cssContainingText('option', command)).click();
+    });
+  }
+
+  public async submit(personalInformation: {[prop: string]: any}): Promise<void> {
+    await this.fillForm(personalInformation);
+    return this.finalButton.click();
+  }
+
+  public async getImageName(): Promise<string> {
+    return this.uploadImageInput.getAttribute('value');
   }
 
   public async fillForm(personalInformation: {[prop: string]: any}): Promise<void> {
@@ -47,17 +72,10 @@ export class PersonalInformationPage {
     await this.fillLastNameInput(personalInformation.lastName);
     await this.fillSexInput(personalInformation.sex);
     await this.fillExperienceInput(personalInformation.experience);
-    await personalInformation.profession.forEach(async (profession:string) => {
-      await this.fillProfessionInput(profession);
-    });
-    await personalInformation.tools.forEach(async (tool: string) => {
-      await this.fillToolsInput(tool);
-    });
+    await this.fillProfessionInput(personalInformation.professions);
+    await this.uploadImage(personalInformation.file);
+    await this.fillToolsInput(personalInformation.tools);
     await this.fillContinentInput(personalInformation.continent);
-    await personalInformation.commands.forEach(async (command: string) => {
-      await this.fillCommandsInput(command);
-    });
-
-    return this.finalButton.click();
+    return this.fillCommandsInput(personalInformation.commands);
   }
 }

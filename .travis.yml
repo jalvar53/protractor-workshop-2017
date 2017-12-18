@@ -1,17 +1,15 @@
 language: node_js
 cache:
   directories:
-    - node_modules
+  - node_modules
 notifications:
   email: false
 node_js:
-  - '7'
-before_install:
-  - wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
-  - sudo sh -c 'echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list'
-  - sudo apt-get update
-  - sudo apt-get install google-chrome-stable
-  - export CHROME_BIN=chromium-browser
+- '7'
 branches:
   except:
-    - /^v\d+\.\d+\.\d+$/
+  - "/^v\\d+\\.\\d+\\.\\d+$/"
+env:
+  global:
+  - secure: K5Ku34ax5fqXzD/T2/ELKpA+TkCe+RCE9d9cDoJHCJM0bnlhzSgmcImqUDZHW/Q2VA0tLG3Vsd8truJksmTPy7+crPP4TzfeMquu2GnuPt7/9jndWKd34M6aebDI11xXH9ccNI1DfqEUtv85eNyo2KJCdqw4JyBfTep9s1L7PbZFTlSmAH3OWuvJ4bLutn80Lv+4Tcmti73xySXeyccFSQZ0ff0bw+Hq6Ck7hv8JT8lsCOHfHF/8U33JTKDGadqiYbv3wEF95isDX7xopP5UQXgOUjtVOBzmfT6jh5e2MZvtjA1UESeCl536Vh/Ew5rGDMUnOT8Bz5aIZfZym0yHZiocanVLZ+TfwH/mILRf738VTgfcdVLyNdRNDpSU/Jj82oLpwVR3kt2QipPK+iTPgJ3AnhIrAuEkLkv7sSR+P8ID+vTRaFLKS7KLWcLNx3V0DRZsAKCCoHY0Q9c8PJJKJ0ge8HU1g/bZKxmGT/+Br2hCzoRht8ZyYFfX4VM5EBOLx/tW8xgeSS9AV8sQNcE8JH3NSdqloawMZ1rvTGT44I9pC1Bn6aP6cBZ0d9nFOqchB7rLvdhxQH1qyoLn5P0466pcMfgO3WDwhP0bhdgXhCps4XL2D2HNp3KlA6ZLaI1L7HtSwdXVgH1opECLpglcVwiDu6ozhyaIqeHpby8GkWg=
+  - secure: Q1lF69qRLg4NVsiqZE4D/2WbBbD27IjaGDfRHgQo6nEmU5hExCVy3ztw+OU4CZvrCnHEQBiJBxAEIda6IxNC5IP9DFXxygkNbhwe/bbvyE+o4sdgMzubIDjmhMndJhIAGu8Ky4clWIrMCQjk5eX4sVFfTC7mMIg+oSwce11PzP2YSI3qPT8095k4+LyC74JDZ07Bgziiw7F7JSZkZXWToTFpv+/MYlRMnBOx14Lyip19Ty/UfVFAk/NEcyKSAc1FaMZeNStXrla8i0mcQzBOAAHLjCKYWRgv8ee3RtyRVWmwvpcLAWXVKWo7PpK9wmbBIqFZNK+wPh96Ia/zdBc9cJiCRi3qGVm953cEIfu+q/gVRV74pWT9gyRsfbCPMpldhaLjBk98ME67umNdx8u/CgytrjsRCV0vtNBwRowYkG5r8G+qmkqOrPSGGeDVw6DSl3CqWqk4rUekJ/t3/E5B9ajCa17eTH+lfxd0bQYDscRytBZDb46YuPxmnj7rRS8+BMlSfuPsoURY9HxOvGx2kdIZPaG2q/8IhvDP17g+h0lkj6RW/bEa+gz26Itt9WFQF8GlNNPpHPBuvZAxQEKwjhTKESBhWAq0BeGpqYCt1X7p35WXeAPwP8Q0SIUa2lygjSSiG5HPiD1Q0rgW4OHZC5XtLHkYyLDNF4T8Y6KVPmc=

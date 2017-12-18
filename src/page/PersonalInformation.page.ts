@@ -13,7 +13,7 @@ export class PersonalInformationPage {
   private get finalButton(): ElementFinder {
     return $('#submit');
   }
-
+  
   public get downloadButton(): ElementFinder {
     return $('a[href$=".xlsx"]');
   }
@@ -64,7 +64,7 @@ export class PersonalInformationPage {
       await $('#selenium_commands').element(by.cssContainingText('option', command)).click();
     });
   }
-
+  
   private async download(fileName: string): Promise<void> {
     const link: string = await this.downloadButton.getAttribute('href');
     return this.downloadService.downloadFile(link, fileName);
